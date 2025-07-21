@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<Factory name="SomeWhere">
+
+  <!-- Level 1 -->
+  <FactoryWaypoints>
+    <!-- Level 2 -->
+    <WaypointTableEntry>
+      <!-- Level 3 -->
+      <Lat>45.0</Lat>
+      <Lon>-10.0</Lon>
+      <Alt>3000</Alt>
+    </WaypointTableEntry>
+  </FactoryWaypoints>
+
+  <SomethingLoad>
+    <Name>Teacher</Name>
+    <SomethingLoadAttributes>
+      <UseSystemDefaultSomething>True</UseSystemDefaultSomething>
+    </SomethingLoadAttributes>
+  </SomethingLoad>
+
+  <Target>
+    <TargetTable>
+      <TargetTableEntry>   
+        <Name>Home</Name>
+        <TargetID>00157</TargetID>
+        <StartTime>20250708</StartTime>
+        <EndTime>20250709</EndTime>
+        <AttributionA>1234</AttributionA>
+        <AttributionB>2345</AttributionB>
+        <AttributionC>3456</AttributionC>
+        <AttributionD>4567</AttributionD>
+      </TargetTableEntry>
+    </TargetTable>
+  </Target>
+
+</Factory>
