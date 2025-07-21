@@ -9,7 +9,7 @@ import os
 
 
 # 设置临时环境变量来指定音频文件存储路径
-# os.environ['AUDIO_DIR'] = r"F:\SY_files\硕士_xml_提示词工程\code_file\txt2xml_v2\tmp\audio"
+# os.environ['AUDIO_DIR'] = r"F:\SY_files\SY_xml_prompt_work\code_file\txt2xml_v2\tmp\audio"
 
 # 从环境变量中获取音频文件存储路径
 audio_dir = os.environ.get('AUDIO_DIR', os.path.join(os.path.dirname(__file__), 'audio'))
@@ -19,8 +19,8 @@ res_file = ''
 # 设置录音的参数
 FORMAT = pyaudio.paInt16  # 音频格式
 CHANNELS = 1  # 单声道
-RATE = 16000  # 采样率
-CHUNK = 1280    # 每次读取的数据块大小
+RATE = 44100  # 采样率
+CHUNK = 1024    # 每次读取的数据块大小
 
 # 创建pyaudio对象
 p = pyaudio.PyAudio()

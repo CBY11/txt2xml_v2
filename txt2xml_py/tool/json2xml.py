@@ -4,12 +4,10 @@ from lxml import etree
 import json
 from bs4 import BeautifulSoup
 
-from txt2xml_v2.txt2xml_py.tool import txt2xml_client
+from . import txt2xml_client
 
 client = txt2xml_client.txt2xml_client
 find_op_action_list = [4]
-
-
 
 json2xml_background = """
     整个坐标屏幕大小为2000x2000，用户以中心x=1000，y=1000为中心，左上角为坐标原点,x轴向下为正方向，y轴向右为正方向，进行描述，
@@ -85,7 +83,6 @@ def find_op_ele(json_obj, xml_file_path):
     # 不会有重复的元素
     #
 
-
     # 查找对应元素
     # 加载 XML 文件
     tree = etree.parse(xml_file_path)
@@ -128,8 +125,6 @@ def find_op_ele(json_obj, xml_file_path):
         print(etree.tostring(elem))
 
 
-
-
 def modify_xml(json_obj, xml_file_path):
     if json_obj['action_type'] not in find_op_action_list:
         xml_str = json2xml(json_obj)
@@ -141,7 +136,6 @@ def modify_xml(json_obj, xml_file_path):
         # 需要修改元素的情况
         pass
 
-
     # 读取 HTML 文件
     with open(xml_file_path, 'r', encoding='gbk') as file:
         html_content = file.read()
@@ -152,7 +146,6 @@ def modify_xml(json_obj, xml_file_path):
     # print(str(soup))
 
     # 创建新的 XML 标签（你可以插入任何XML文本格式的标签）
-
 
     # 查找 SVG 元素
     svg = soup.find('svg')  # 假设HTML中只有一个 <svg> 元素，或者你可以使用更具体的选择器
@@ -242,6 +235,6 @@ if __name__ == '__main__':
     """
     # xml_str = json2xml(json_obj)
     #
-    xml_file_path = r'F:\SY_files\硕士_xml_提示词工程\code_file\txt2xml_v2\xml_file\test_v2.html'
+    xml_file_path = r'F:\SY_files\SY_xml_prompt_work\code_file\txt2xml_v2\xml_file\test_v2.html'
     modify_xml(xml_str, xml_file_path)
     # modify_xml(xml_str, xml_file_path)

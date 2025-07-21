@@ -2,7 +2,7 @@
 
 import json
 
-from txt2xml_v2.txt2xml_py.tool import txt2xml_client, action_classifier
+from . import txt2xml_client, action_classifier
 
 client = txt2xml_client.txt2xml_client
 

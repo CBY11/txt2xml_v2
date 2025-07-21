@@ -222,6 +222,6 @@ def get_txt(AudioFile):
 
 if __name__ == '__main__':
     res_txt = ''
-    # get_txt(r"F:\SY_files\硕士_xml_提示词工程\code_file\txt2xml_v2\tmp\audio\recording_6d569461a1d34b238f65573499479439.pcm")
-    res = get_txt(r"F:\SY_files\硕士_xml_提示词工程\code_file\txt2xml_v2\tmp\audio\recording_f13e5695bf4a468eb37e3760532a7622.wav")
+    # get_txt(r"F:\SY_files\SY_xml_prompt_work\code_file\txt2xml_v2\tmp\audio\recording_6d569461a1d34b238f65573499479439.pcm")
+    res = get_txt(r"F:\SY_files\SY_xml_prompt_work\code_file\txt2xml_v2\tmp\audio\recording_f13e5695bf4a468eb37e3760532a7622.wav")
     print(res)

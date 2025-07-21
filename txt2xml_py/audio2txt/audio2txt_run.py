@@ -6,7 +6,7 @@ from funasr.utils.postprocess_utils import rich_transcription_postprocess
 import pyaudio
 import wave
 
-from txt2xml_v2.txt2xml_py.audio2txt import get_audio
+from . import get_audio
 
 # 定义音频流参数
 FORMAT = pyaudio.paInt16
@@ -14,18 +14,13 @@ CHANNELS = 1
 RATE = 44100
 CHUNK = 1024
 
-FORMAT = pyaudio.paInt16
-CHANNELS = 1
-RATE = 44100
-CHUNK = 1024
+# os.environ['ASR_DIR'] = r"F:\SY_files\SY_xml_prompt_work\code_file\txt2xml_v2\txt2xml_py\audio2txt"
 
-model_dir = os.path.join(os.getenv('ASR_DIR', ""), "SenseVoiceSmall")
+model_dir = os.path.join(os.getenv('ASR_DIR', r".\audio2txt"), "SenseVoiceSmall")
 model = AutoModel(
     model=model_dir,
-    trust_remote_code=True,
-    remote_code=os.path.join(os.getenv('ASR_DIR', ""), "model.py"),
-    vad_model="fsmn-vad",
-    vad_kwargs={"max_single_segment_time": 30000},
+    # vad_model="fsmn-vad",
+    # vad_kwargs={"max_single_segment_time": 30000},
     device="cuda:0",
     disable_update=True
 )

@@ -1,7 +1,7 @@
 # 对get_info中的name进行标准化，将其转换为标准化的形式，用于生成xml
 import json
 
-from txt2xml_v2.txt2xml_py.tool import txt2xml_client
+from . import txt2xml_client
 
 client = txt2xml_client.txt2xml_client
 
