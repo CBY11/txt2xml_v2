@@ -1,4 +1,4 @@
-root_pth: F:\SY_files\SY_xml_prompt_work\code_file\
+root_pth: F:\SY_files\SY_xml_prompt_work\code_file\txt2xml_v2
 dest_xml_file: F:\SY_files\SY_xml_prompt_work\code_file\txt2xml_v2\xml_file\test_v2.html
 prompt_yaml: F:\SY_files\SY_xml_prompt_work\code_file\txt2xml_v2\config\prompt.yaml
 example_json:
