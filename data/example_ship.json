@@ -1,0 +1,47 @@
+[
+    {
+        "name": "CVN78",
+        "alias_name": ["杰拉尔德·R·福特号航空母舰", "福特号航空母舰"],
+        "type": "舰船",
+        "type_name": "福特级航空母舰",
+        "attribute": {
+            "plane": true,
+            "nuclear_power": true,
+            "speed_knot": 30,
+            "num_plane": 90
+        }
+    },
+    {
+        "name": "DDG-51",
+        "alias_name": ["阿利·伯克号驱逐舰"],
+        "type": "舰船",
+        "type_name": "阿利·伯克级驱逐舰",
+        "attribute": {
+            "missile": true,
+            "num_missile": 90,
+            "speed_knot": 30
+        }
+    },
+    {
+        "name": "DDG-52",
+        "alias_name": ["巴里号驱逐舰"],
+        "type": "舰船",
+        "type_name": "阿利·伯克级驱逐舰",
+        "attribute": {
+            "missile": true,
+            "num_missile": 90,
+            "speed_knot": 30
+        }
+    },
+    {
+        "name": "DDG-1000",
+        "alias_name": ["朱姆沃尔特号驱逐舰", "朱沃特号驱逐舰"],
+        "type": "舰船",
+        "type_name": "朱姆沃尔特级驱逐舰",
+        "attribute": {
+            "missile": true,
+            "num_missile": 80,
+            "speed_knot": 30
+        }
+    }
+]
