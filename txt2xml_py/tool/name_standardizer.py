@@ -38,6 +38,7 @@ name_standardizer_prompt = f"""
 - 输出3："missile-launcher"
 """
 
+
 def get_standard_name(name):
     messages = [{"role": "system", "content": name_standardizer_prompt},
                 {"role": "user", "content": name}]
@@ -50,11 +51,12 @@ def get_standard_name(name):
     return response.choices[0].message.content
 
 
-def get_standard_json(json_obj, fields_to_standardize=None, standarder = get_standard_name):
+def get_standard_json(json_obj, fields_to_standardize=None, standarder=get_standard_name):
     """
     递归遍历 json_obj，标准化指定字段（fields_to_standardize）中的值，
     使用 get_standard_name 函数对指定字段进行标准化。
 
+    :param standarder: standardize 函数，用于对指定字段进行标准化。
     :param json_obj: 输入的 JSON 对象（可以是字典或列表）。
     :param fields_to_standardize: 要进行标准化的字段名称列表。
     :return: 返回一个新的 JSON 对象，其中指定的字段已被标准化。
@@ -78,9 +80,9 @@ def get_standard_json(json_obj, fields_to_standardize=None, standarder = get_sta
 
     return json_obj
 
+
 def get_standard_xy(ne_num):
     return 1000 + float(ne_num) * 5
-
 
 
 if __name__ == '__main__':
@@ -98,10 +100,10 @@ if __name__ == '__main__':
                 "action": "隐蔽待命",
                 "target": {
                     "nickname": "null",
-                    "longitude" : 150.391,
-                    "latitude" : 60.042,
+                    "longitude": 150.391,
+                    "latitude": 60.042,
                 },
-                "object_asset":[
+                "object_asset": [
                     {
                         "object_type": "爱国者导弹",
                         "number": 4,
@@ -112,5 +114,6 @@ if __name__ == '__main__':
     }
 
     standard_json_obj = get_standard_json(json_obj, fields_to_standardize=["object_type"], standarder=get_standard_name)
-    standard_json_obj = get_standard_json(standard_json_obj, fields_to_standardize=["longitude", "latitude"], standarder=get_standard_xy)
+    standard_json_obj = get_standard_json(standard_json_obj, fields_to_standardize=["longitude", "latitude"],
+                                          standarder=get_standard_xy)
     print(json.dumps(standard_json_obj, indent=4, ensure_ascii=False))
