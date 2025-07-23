@@ -9,63 +9,153 @@ from . import txt2xml_client
 client = txt2xml_client.txt2xml_client
 find_op_action_list = [4]
 
-json2xml_background = """
-    整个坐标屏幕大小为2000x2000，用户以中心x=1000，y=1000为中心，左上角为坐标原点,x轴向下为正方向，y轴向右为正方向，进行描述，
-    longitude表示经度，latitude表示纬度，action表示动作，target表示目标，object_type表示对象类型，object_asset表示对象资产，
-    longitude即x轴坐标，latitude即y轴坐标
-    遵从上北下南左西右东的原则，例如东南即x>1000，y>1000，西北即x<1000，y<1000,东北即x>1000，y<1000，西南即x<1000，y>1000。
-    tank的大小为200*200, soldier的大小为100*100, missile-launcher的大小为150*150,
-    """
-
 json2xml_prompt = """
 用户将输入一个json对象，将其转换为xml格式:
-背景信息如下：{ json2xml_background }
-
 EXAMPLE JSON INPUT: 
-{
-    "action_type": 2,
-    "objects": [
+  {
+    "action_type": "1",
+    "object": {
+      "object_name": "CVN78",
+      "longitude": "116.391",
+      "latitude": "40.042",
+      "attribute": {
+        "plane": "True",
+        "nuclear_power": true,
+        "speed_knot": 30,
+      },
+      "object_assets": [
         {
-            "object_type": "missile-launcher",
-            "number": 4,
-            "longitude": 1081.955,
-            "latitude": 299.78999999999996,
-            "action": "隐蔽待命",
-            "target": {
-                "nickname": "无",
-                "longitude": 1751.955,
-                "latitude": 1300.21
-            },
-            "object_asset": [
-                {
-                    "object_type": "missile",
-                    "number": 4
-                }
-            ]
+          "object_name": "LGM-30G",
+          "number": "20",
+          "attribute": {
+            "on_land": true,
+            "to_plane": false,
+            "range": 13000,
+          }
         }
-    ]
-}
+      ],
+      "object_targets": [
+        {
+          "name": "New York",
+          "attribute": {
+            "lat": 40.7128,
+            "lon": -74.0060,
+            "people_count": 8804190
+          }
+        }
+      ]
+    }
+  }
 
 EXAMPLE XML OUTPUT:
-<g>
-<rect fill="url(#missile-launcher_p)" height="150" width="150" x="1081" y="299">
-    <title>
-        详细信息：
-        数量：4
-        动作：隐蔽待命
-        目标：
-        目标位置：1751.955，1300.21
-        武器配置：
-        武器类型：missile
-        数量：4
-    </title>
-</rect>
-<use href="#aim" x="1751" y="1300"></use>
-<line stroke="red" stroke-dasharray="5,5" stroke-width="2" x1="1081" x2="1751" y1="299" y2="1300"></line>
-</g>
+<Factory name="CVN78">
+        <FactoryWaypoints> 
+            <WaypointTableEntry> 
+                <Lat>116.391</Lat> 
+                <Lon>40.042</Lon>
+                <Alt>0</Alt> 
+                <latest/>
+            </WaypointTableEntry>
+        </FactoryWaypoints>
+        <FactoryAttributes>
+            <plane>true</plane>
+            <nuclear_power>true</nuclear_power>
+            <speed_knot>30</speed_knot>
+        </FactoryAttributes>
+        <SomethingLoad>
+            <Name>LGM-30G</Name> 
+            <Count>20</Count>
+            <SomethingLoadAttributes> 
+                <UseSystemDefaultSomething>True</UseSystemDefaultSomething>
+                <on_land>true</on_land>
+                <to_plane>false</to_plane>
+                <range>13000</range>
+            </SomethingLoadAttributes>
+        </SomethingLoad>
+        <Target>
+            <TargetTable> 
+                <TargetTableEntry> 
+                    <Name>New York</Name>
+                    <Latitude>40.7128</Latitude>
+                    <Longitude>-74.0060</Longitude>
+                    <Population>8804190</Population>
+                </TargetTableEntry>
+            </TargetTable>
+        </Target>
+    </Factory>
 """
 
-json2xml_prompt = json2xml_prompt.replace("{ json2xml_background }", json2xml_background)
+json2xml_modify_prompt = """
+    用户将输入一个json对象和一个字符串形式的xml标签，将json对象中可能包含的信息更新到xml中有关的元素上标签，格式化输出xml字符串
+    EXAMPLE INPUT: 
+        json:
+        {
+            "action_type": "1",
+            "object": {
+              "object_name": "CVN78",
+              "longitude": "116.391",
+              "latitude": "40.042",
+              "object_asset": [
+              ],
+              "attribute": {
+              }
+            }
+          } 
+        xml:
+        <Factory name="CVN78">
+            <FactoryWaypoints> <!-- 航母、舰艇 途径点 -->
+                <WaypointTableEntry> <!-- 途径点 -->
+                    <Lat>44.0</Lat> <!-- 北纬 -->
+                    <Lon>-10.0</Lon> <!-- 东经 -->
+                    <Alt>0</Alt> <!-- 海拔 -->
+                </WaypointTableEntry>
+                <WaypointTableEntry> <!-- 途径点 -->
+                    <Lat>45.0</Lat> <!-- 北纬 -->
+                    <Lon>-10.0</Lon> <!-- 东经 -->
+                    <Alt>0</Alt> <!-- 海拔 -->
+                    <latest/><!-- 最新目标点 -->
+                </WaypointTableEntry>
+            </FactoryWaypoints>
+        </Factory> 
+        
+    EXAMPLE OUTPUT:
+        <Factory name="CVN78">
+            <FactoryWaypoints> <!-- 航母、舰艇 途径点 -->
+                <WaypointTableEntry> <!-- 途径点 -->
+                    <Lat>44.0</Lat> <!-- 北纬 -->
+                    <Lon>-10.0</Lon> <!-- 东经 -->
+                    <Alt>0</Alt> <!-- 海拔 -->
+                </WaypointTableEntry>
+                <WaypointTableEntry> <!-- 途径点 -->
+                    <Lat>45.0</Lat> <!-- 北纬 -->
+                    <Lon>-10.0</Lon> <!-- 东经 -->
+                    <Alt>0</Alt> <!-- 海拔 -->
+                </WaypointTableEntry>
+                <WaypointTableEntry> <!-- 途径点 -->
+                    <Lat>116.391</Lat> <!-- 北纬 -->
+                    <Lon>40.042</Lon> <!-- 东经 -->
+                    <Alt>0</Alt> <!-- 海拔 -->
+                    <latest/><!-- 最新目标点 -->
+                </WaypointTableEntry>
+            </FactoryWaypoints>
+        </Factory> 
+"""
+
+
+def extract_xml_from_string(input_string):
+    # 找到被 ```xml``` 包裹的部分
+    start_tag = '```xml'
+    end_tag = '```'
+
+    # 查找开始和结束的位置
+    start_index = input_string.find(start_tag)
+    end_index = input_string.find(end_tag, start_index + len(start_tag))
+
+    if start_index != -1 and end_index != -1:
+        # 提取 xml 内容
+        return input_string[start_index + len(start_tag):end_index].strip()
+    else:
+        return input_string  # 如果没找到 XML 部分
 
 
 def json2xml(json_obj):
@@ -79,110 +169,60 @@ def json2xml(json_obj):
     return response.choices[0].message.content
 
 
-def find_op_ele(json_obj, xml_file_path):
-    # 不会有重复的元素
-    #
-
-    # 查找对应元素
-    # 加载 XML 文件
-    tree = etree.parse(xml_file_path)
-
-    # 获取 JSON 中的标签名称和属性
-    tag_name = json_obj["tag_name"]
-    attributes = json_obj["attributes"]
-
-    # 遍历所有的 tag_name 标签
-    matching_elements = []
-    for elem in tree.xpath(f"//{tag_name}"):
-
-        match = True
-        for key, value in attributes.items():
-            elem_value = elem.get(key)
-
-            # 如果属性值是字典（表示范围），进行范围匹配（数字）
-            if isinstance(value, float):
-                # 检查属性是否可以转换为数字
-                try:
-                    num_value = float(elem_value)
-                    if num_value < value['min'] or num_value > value['max']:
-                        match = False
-                        break
-                except ValueError:
-                    match = False
-                    break
-
-            # 如果是字符串，进行模糊匹配
-            elif isinstance(value, str):
-                if value not in elem_value:
-                    match = False
-                    break
-
-        if match:
-            matching_elements.append(elem)
-
-    # 输出所有匹配的元素
-    for elem in matching_elements:
-        print(etree.tostring(elem))
+def json2xml_modify(json_obj, old_xml_str):
+    messages = [{"role": "system", "content": json2xml_modify_prompt},
+                {"role": "user", "content":
+                    f"""json:
+                    {str(json_obj)}
+                    xml:
+                    {old_xml_str}
+                    """}]
+    response = client.chat.completions.create(
+        model="deepseek-chat",
+        messages=messages,
+        temperature=0,
+    )
+    return response.choices[0].message.content
 
 
-def modify_xml(json_obj, xml_file_path):
-    if json_obj['action_type'] not in find_op_action_list:
-        xml_str = json2xml(json_obj)
-        print("XML构建结果: ", xml_str)
-        print(
-            "========================================================================================================")
-        new_ele = BeautifulSoup(xml_str, 'xml')  # 将文本字符串转为 BeautifulSoup 对象
+def modify_xml(json_obj, src_xml_file_path, xml_file_path):
+    # 读取 XML 文件
+    with open(src_xml_file_path, 'r', encoding='utf-8') as file:
+        xml_content = file.read()
+
+    # 使用 BeautifulSoup 解析 XML
+    soup = BeautifulSoup(xml_content, 'xml')
+
+    # 查找 <Factory> 标签，匹配其 name 属性
+    factory = soup.find('Factory', {'name': json_obj["object"]["object_name"]})
+
+    if factory:
+        # 找到匹配的 <Factory> 标签，执行后续操作
+        # print(f"Found matching <Factory> with name: {json_obj['name']}")
+        # 在这里执行你需要的修改逻辑
+        xml_str = json2xml_modify(json_obj, str(factory))  # 使用 json2xml_modify 转换为 XML 字符串
+        xml_str = extract_xml_from_string(xml_str)
+        new_ele = BeautifulSoup(xml_str, 'xml')
+        factory.replace_with(new_ele)  # 替换原有元素
     else:
-        # 需要修改元素的情况
-        pass
+        # 没有找到匹配的 <Factory> 标签，执行其他操作
+        # print(f"No matching <Factory> found with name: {json_obj['name']}")
+        # 这里可以添加需要的操作，可能是创建新的元素或其他逻辑
+        xml_str = json2xml(json_obj)  # 使用 json2xml 转换为 XML 字符串
+        xml_str = extract_xml_from_string(xml_str)
+        new_ele = BeautifulSoup(xml_str, 'xml')
+        g = soup.find('g')  # 假设最外层是 <g> 标签
+        g.append(new_ele)
 
-    # 读取 HTML 文件
-    with open(xml_file_path, 'r', encoding='gbk') as file:
-        html_content = file.read()
-
-    # 使用 BeautifulSoup 解析 HTML
-    soup = BeautifulSoup(html_content, 'html.parser')
-
-    # print(str(soup))
-
-    # 创建新的 XML 标签（你可以插入任何XML文本格式的标签）
-
-    # 查找 SVG 元素
-    svg = soup.find('svg')  # 假设HTML中只有一个 <svg> 元素，或者你可以使用更具体的选择器
-
-    # 获取<g>标签中所有的<rect>元素
-    rects = new_ele.find_all('rect')
-    # print(rects)
-
-    try:
-        # 记录初始x坐标
-        current_x = float(rects[0]['x'])
-
-        # 遍历所有<rect>标签并修改x坐标
-        for rect in rects:
-            # 获取当前矩形的宽度
-            width = float(rect['width'])
-
-            # 更新当前矩形的x坐标
-            rect['x'] = str(current_x)
-
-            # 为下一个矩形准备x坐标（当前矩形的x + 宽度）
-            current_x += width
-    except:
-        pass
-
-    rects = new_ele.find_all('rect')
-    # print(rects)
-
-    # 如果找到 SVG 元素，修改其中的内容
-    if svg:
-        svg.append(new_ele)  # 将新标签添加到 SVG 元素中
+    print("XML构建结果: ", xml_str)
+    print(
+        "========================================================================================================")
 
     # 将修改后的 HTML 保存到文件
-    with open(xml_file_path, 'w', encoding='gbk') as file:
+    with open(xml_file_path, 'w', encoding='utf-8') as file:
         file.write(str(soup))
 
-    print("SVG 内容已修改并保存。")
+    print("XML 内容已修改并保存。")
 
 
 if __name__ == '__main__':

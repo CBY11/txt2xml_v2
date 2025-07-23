@@ -51,34 +51,42 @@ def get_standard_name(name):
     return response.choices[0].message.content
 
 
-def get_standard_json(json_obj, fields_to_standardize=None, standarder=get_standard_name):
+def get_standard_obj(name, src_jsons):
+    for obj in src_jsons:
+        if name in obj["alias_name"]:
+            return obj["name"], obj["attribute"]
+    return name, {}
+
+
+def get_standard_json(src_jsons, json_obj_to_std, fields_to_standardize=None, standarder=get_standard_obj):
     """
     递归遍历 json_obj，标准化指定字段（fields_to_standardize）中的值，
     使用 get_standard_name 函数对指定字段进行标准化。
 
+    :param src_jsons: 知识库
     :param standarder: standardize 函数，用于对指定字段进行标准化。
-    :param json_obj: 输入的 JSON 对象（可以是字典或列表）。
+    :param json_obj_to_std: 输入的 JSON 对象（可以是字典或列表）。
     :param fields_to_standardize: 要进行标准化的字段名称列表。
     :return: 返回一个新的 JSON 对象，其中指定的字段已被标准化。
     """
     if fields_to_standardize is None:
         fields_to_standardize = ["object_type", "object_name"]
-    if isinstance(json_obj, dict):
+    if isinstance(json_obj_to_std, dict):
         # 如果当前对象是字典类型，遍历其中的每一项
-        for key, value in json_obj.items():
+        for key, value in list(json_obj_to_std.items()):
             # 如果值是嵌套的字典或列表，递归处理
             if isinstance(value, (dict, list)):
-                json_obj[key] = get_standard_json(value, fields_to_standardize, standarder)
+                json_obj_to_std[key] = get_standard_json(src_jsons, value, fields_to_standardize, standarder)
             # 如果当前键在 fields_to_standardize 中，并且值是字符串类型，则进行标准化
             elif key in fields_to_standardize:
-                json_obj[key] = standarder(value)
+                json_obj_to_std[key], json_obj_to_std["attribute"] = standarder(value, src_jsons)
 
-    elif isinstance(json_obj, list):
+    elif isinstance(json_obj_to_std, list):
         # 如果当前对象是列表类型，遍历其中的每个元素
-        for idx, item in enumerate(json_obj):
-            json_obj[idx] = get_standard_json(item, fields_to_standardize, standarder)
+        for idx, item in enumerate(json_obj_to_std):
+            json_obj_to_std[idx] = get_standard_json(src_jsons, item, fields_to_standardize, standarder)
 
-    return json_obj
+    return json_obj_to_std
 
 
 def get_standard_xy(ne_num):
@@ -89,31 +97,103 @@ if __name__ == '__main__':
     # name = "武警"
     # standard_name = get_standard_name(name)
     # print(standard_name)
-    json_obj = {
-        "action_type": 2,
-        "objects": [
-            {
-                "object_type": "爱国者导弹发射车",
-                "number": 4,
-                "longitude": 16.391,
-                "latitude": -140.042,
-                "action": "隐蔽待命",
-                "target": {
-                    "nickname": "null",
-                    "longitude": 150.391,
-                    "latitude": 60.042,
+    example_json = {
+        "action_type": "1",
+        "object": {
+            "object_name": "福特号航空母舰",
+            "longitude": "116.391",
+            "latitude": "40.042",
+            "object_asset": [
+                {
+                    "object_name": "闪电战斗机",
+                    "number": "10"
                 },
-                "object_asset": [
-                    {
-                        "object_type": "爱国者导弹",
-                        "number": 4,
-                    }
-                ]
-            },
-        ]
+                {
+                    "object_name": "民兵3",
+                    "number": "20"
+                }
+            ]
+        }
     }
 
-    standard_json_obj = get_standard_json(json_obj, fields_to_standardize=["object_type"], standarder=get_standard_name)
-    standard_json_obj = get_standard_json(standard_json_obj, fields_to_standardize=["longitude", "latitude"],
-                                          standarder=get_standard_xy)
-    print(json.dumps(standard_json_obj, indent=4, ensure_ascii=False))
+    info_json = [
+        {
+            "name": "CVN78",
+            "alias_name": [
+                "杰拉尔德·R·福特号航空母舰",
+                "福特号航空母舰"
+            ],
+            "type": "舰船",
+            "type_name": "福特级航空母舰",
+            "attribute": {
+                "plane": True,
+                "nuclear_power": True,
+                "speed_knot": 30,
+                "num_plane": 90
+            }
+        },
+        {
+            "name": "F-35",
+            "alias_name": [
+                "Lightning II",
+                "闪电战斗机"
+            ],
+            "type": "战斗机",
+            "attribute": {
+                "speed_mach": 1.6,
+                "stealth": True,
+                "aircraft_gun": True,
+                "max_height": 18300,
+                "missile_load": []
+            },
+            "sub_model": [
+                {
+                    "name": "F-35A",
+                    "alias_name": [],
+                    "attribute": {
+                        "on_ship": False,
+                        "combat_radius": 1239
+                    }
+                },
+                {
+                    "name": "F-35B",
+                    "alias_name": [],
+                    "attribute": {
+                        "on_ship": True,
+                        "combat_radius": 935
+                    }
+                },
+                {
+                    "name": "F-35C",
+                    "alias_name": [],
+                    "attribute": {
+                        "on_ship": True,
+                        "combat_radius": 1240
+                    }
+                }
+            ]
+        },
+        {
+            "name": "LGM-30G",
+            "alias_name": [
+                "Minuteman III",
+                "民兵3"
+            ],
+            "type": "导弹",
+            "attribute": {
+                "on_land": True,
+                "on_ship": False,
+                "on_plane": False,
+                "to_land": True,
+                "to_ship": False,
+                "to_plane": False,
+                "range": 13000,
+                "num_warhead": 3
+            }
+        }
+    ]
+
+    std_info_json = get_standard_json(info_json, example_json,
+                                      fields_to_standardize=["object_name"],
+                                      standarder=get_standard_obj)
+    print(json.dumps(std_info_json, indent=4, ensure_ascii=False))

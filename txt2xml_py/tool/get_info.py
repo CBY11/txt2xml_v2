@@ -100,10 +100,6 @@ get_info_template4 = """
 """
 
 get_info_template_list = [
-    get_info_template1,
-    get_info_template2,
-    get_info_template3,
-    get_info_template4
 ]
 
 def get_info(text, action_type):
