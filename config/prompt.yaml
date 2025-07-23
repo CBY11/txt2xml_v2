@@ -1,13 +1,13 @@
-root_pth: F:\SY_files\SY_xml_prompt_work\code_file\txt2xml_v2
-src_xml_file: F:\SY_files\SY_xml_prompt_work\code_file\txt2xml_v2\xml_file\safe_demo\safe_demo_src.xml
-dest_xml_file: F:\SY_files\SY_xml_prompt_work\code_file\txt2xml_v2\xml_file\safe_demo\safe_demo.xml
-prompt_yaml: F:\SY_files\SY_xml_prompt_work\code_file\txt2xml_v2\config\prompt.yaml
+root_pth: ..
+src_xml_file: ..\xml_file\safe_demo\safe_demo_src.xml
+dest_xml_file: ..\xml_file\safe_demo\safe_demo.xml
+prompt_yaml: ..\config\prompt.yaml
 example_json:
-  - json: F:\SY_files\SY_xml_prompt_work\code_file\txt2xml_v2\tmp\json\example_base.json
-  - json: F:\SY_files\SY_xml_prompt_work\code_file\txt2xml_v2\tmp\json\example_missile.json
-  - json: F:\SY_files\SY_xml_prompt_work\code_file\txt2xml_v2\tmp\json\example_plane.json
-  - json: F:\SY_files\SY_xml_prompt_work\code_file\txt2xml_v2\tmp\json\example_ship.json
-  - json: F:\SY_files\SY_xml_prompt_work\code_file\txt2xml_v2\tmp\json\example_target.json
+  - json: ..\tmp\json\example_base.json
+  - json: ..\tmp\json\example_missile.json
+  - json: ..\tmp\json\example_plane.json
+  - json: ..\tmp\json\example_ship.json
+  - json: ..\tmp\json\example_target.json
 
 
 # 识别行为模式的模板

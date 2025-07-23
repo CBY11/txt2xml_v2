@@ -16,7 +16,7 @@ CHUNK = 1024
 
 # os.environ['ASR_DIR'] = r"F:\SY_files\SY_xml_prompt_work\code_file\txt2xml_v2\txt2xml_py\audio2txt"
 
-model_dir = os.path.join(os.getenv('ASR_DIR', r".\audio2txt"), "SenseVoiceSmall")
+model_dir = "./audio2txt/SenseVoiceSmall"
 model = AutoModel(
     model=model_dir,
     # vad_model="fsmn-vad",

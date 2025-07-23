@@ -71,7 +71,7 @@ if __name__ == '__main__':
         print(
             "========================================================================================================")
 
-        std_info_json = name_standardizer.get_standard_json(example_json_obj, info_json,
+        std_info_json = name_standardizer.get_standard_json(info_json,
                                                             fields_to_standardize=["object_name"],
                                                             standarder=name_standardizer.get_standard_obj)
         # std_info_json = name_standardizer.get_standard_json(std_info_json,
