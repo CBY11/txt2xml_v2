@@ -1,0 +1,30 @@
+[
+    {
+        "name": "LGM-30G",
+        "alias_name": ["Minuteman III", "民兵3"],
+        "type": "导弹",
+        "attribute": {
+            "on_land": true,
+            "on_ship": false,
+            "on_plane": false,
+            "to_land": true,
+            "to_ship": false,
+            "to_plane": false,
+            "range": 13000,
+            "num_warhead": 3
+        }
+    },
+    {
+        "name": "BGM-109",
+        "alias_name": ["战斧巡航导弹"],
+        "type": "导弹",
+        "attribute": {
+            "on_land": false,
+            "on_ship": true,
+            "on_plane": false,
+            "to_land": true,
+            "to_ship": false,
+            "to_plane": false
+        }
+    }
+]

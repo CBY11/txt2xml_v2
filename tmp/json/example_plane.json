@@ -1,0 +1,40 @@
+[
+    {
+        "name": "F-35",
+        "alias_name": ["Lightning II", "闪电战斗机"],
+        "type": "战斗机",
+        "attribute": {
+            "speed_mach": 1.6,
+            "stealth": true,
+            "aircraft_gun": true,
+            "max_height": 18300,
+            "missile_load": []
+        },
+        "sub_model": [
+            {
+                "name": "F-35A",
+                "alias_name": [],
+                "attribute": {
+                    "on_ship": false,
+                    "combat_radius": 1239
+                }
+            },
+            {
+                "name": "F-35B",
+                "alias_name": [],
+                "attribute": {
+                    "on_ship": true,
+                    "combat_radius": 935
+                }
+            },
+            {
+                "name": "F-35C",
+                "alias_name": [],
+                "attribute": {
+                    "on_ship": true,
+                    "combat_radius": 1240
+                }
+            }
+        ]
+    }
+]

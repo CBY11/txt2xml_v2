@@ -1,0 +1,29 @@
+[
+    {
+        "name": "KADENA AB",
+        "alias_name": ["嘉手纳空军基地"],
+        "type": "基地",
+        "attribute": {
+            "lat": 26.355612,
+            "lon": 127.767633,
+            "address": "Okinawa City, Okinawa, Japan",
+            "available": true,
+            "port": false,
+            "airport": true,
+            "num_runway": 2
+        }
+    },
+    {
+        "name": "USFA Yokosuka",
+        "alias_name": ["横须贺基地", "横须贺海军设施"],
+        "type": "基地",
+        "attribute": {
+            "lat": 35.2932,
+            "lon": 139.671293,
+            "address": "",
+            "available": true,
+            "port": true,
+            "airport": false
+        }
+    }
+]

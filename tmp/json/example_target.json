@@ -1,0 +1,104 @@
+[
+    {
+        "name": "New York",
+        "alias_name": ["纽约"],
+        "type": "目标",
+        "attribute": {
+            "lat": 40.7128,
+            "lon": -74.0060,
+            "people_count": 8804190
+        }
+    },
+    {
+        "name": "Los Angeles",
+        "alias_name": ["洛杉矶"],
+        "type": "目标",
+        "attribute": {
+            "lat": 34.0522,
+            "lon": -118.2437,
+            "people_count": 3898747
+        }
+    },
+    {
+        "name": "Chicago",
+        "alias_name": ["芝加哥"],
+        "type": "目标",
+        "attribute": {
+            "lat": 41.8781,
+            "lon": -87.6298,
+            "people_count": 2746388
+        }
+    },
+    {
+        "name": "Houston",
+        "alias_name": ["休斯顿"],
+        "type": "目标",
+        "attribute": {
+            "lat": 29.7604,
+            "lon": -95.3698,
+            "people_count": 2304580
+        }
+    },
+    {
+        "name": "Phoenix",
+        "alias_name": ["菲尼克斯"],
+        "type": "目标",
+        "attribute": {
+            "lat": 33.4484,
+            "lon": -112.0740,
+            "people_count": 1680992
+        }
+    },
+    {
+        "name": "Philadelphia",
+        "alias_name": ["费城"],
+        "type": "目标",
+        "attribute": {
+            "lat": 39.9526,
+            "lon": -75.1652,
+            "people_count": 1584064
+        }
+    },
+    {
+        "name": "San Antonio",
+        "alias_name": ["圣安东尼奥"],
+        "type": "目标",
+        "attribute": {
+            "lat": 29.4241,
+            "lon": -98.4936,
+            "people_count": 1434625
+        }
+    },
+    {
+        "name": "San Diego",
+        "alias_name": ["圣地亚哥"],
+        "type": "目标",
+        "attribute": {
+            "lat": 32.7157,
+            "lon": -117.1611,
+            "people_count": 1386932
+        }
+    },
+    {
+        "name": "Dallas",
+        "alias_name": ["达拉斯"],
+        "type": "目标",
+        "attribute": {
+            "lat": 32.7767,
+            "lon": -96.7970,
+            "people_count": 1304379
+        }
+    },
+    {
+        "name": "San Francisco",
+        "alias_name": ["旧金山"],
+        "type": "目标",
+        "attribute": {
+            "lat": 37.7749,
+            "lon": -122.4194,
+            "people_count": 873965
+        }
+    }
+]
+
+

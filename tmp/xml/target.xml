@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<g>
+    <!-- 纽约 -->
+    <TargetTableEntry>
+        <Name>New York</Name>
+        <AliasName>纽约</AliasName>
+        <TargetID>00101</TargetID>
+        <StartTime>20250708</StartTime>
+        <EndTime>20250709</EndTime>
+        <Latitude>40.7128</Latitude>
+        <Longitude>-74.0060</Longitude>
+        <Population>8804190</Population>
+        <Elevation>10</Elevation>
+    </TargetTableEntry>
+
+    <!-- 洛杉矶 -->
+    <TargetTableEntry>
+        <Name>Los Angeles</Name>
+        <AliasName>洛杉矶</AliasName>
+        <TargetID>00102</TargetID>
+        <StartTime>20250708</StartTime>
+        <EndTime>20250709</EndTime>
+        <Latitude>34.0522</Latitude>
+        <Longitude>-118.2437</Longitude>
+        <Population>3898747</Population>
+        <Elevation>84</Elevation>
+    </TargetTableEntry>
+
+    <!-- 芝加哥 -->
+    <TargetTableEntry>
+        <Name>Chicago</Name>
+        <AliasName>芝加哥</AliasName>
+        <TargetID>00103</TargetID>
+        <StartTime>20250708</StartTime>
+        <EndTime>20250709</EndTime>
+        <Latitude>41.8781</Latitude>
+        <Longitude>-87.6298</Longitude>
+        <Population>2746388</Population>
+        <Elevation>176</Elevation>
+    </TargetTableEntry>
+
+    <!-- 休斯顿 -->
+    <TargetTableEntry>
+        <Name>Houston</Name>
+        <AliasName>休斯顿</AliasName>
+        <TargetID>00104</TargetID>
+        <StartTime>20250708</StartTime>
+        <EndTime>20250709</EndTime>
+        <Latitude>29.7604</Latitude>
+        <Longitude>-95.3698</Longitude>
+        <Population>2304580</Population>
+        <Elevation>13</Elevation>
+    </TargetTableEntry>
+
+    <!-- 菲尼克斯 -->
+    <TargetTableEntry>
+        <Name>Phoenix</Name>
+        <AliasName>菲尼克斯</AliasName>
+        <TargetID>00105</TargetID>
+        <StartTime>20250708</StartTime>
+        <EndTime>20250709</EndTime>
+        <Latitude>33.4484</Latitude>
+        <Longitude>-112.0740</Longitude>
+        <Population>1680992</Population>
+        <Elevation>331</Elevation>
+    </TargetTableEntry>
+
+</g>
