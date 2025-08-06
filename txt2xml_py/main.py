@@ -2,6 +2,18 @@ import json
 import os
 import yaml
 
+# video_folder : /data2/EngineDataset/WebCollect/20250714-18/xhs/video
+# video_list1: /data2/EngineDataset/WebCollect/20250714-18/xhs/video/xhs_video_1.txt
+# video_list2: /data2/EngineDataset/WebCollect/20250714-18/xhs/video/xhs_video_2.txt
+# video_output_folder: /data6/guest/roop/output_0723/video
+# video_log_file_pth: /data6/guest/roop/output_0723/video_log.txt
+#
+# pic_folder : /data2/EngineDataset/WebCollect/20250714-18/xhs/img
+# pic_list1: /data2/EngineDataset/WebCollect/20250714-18/xhs/img/xhs_img_1.txt
+# pic_list2: /data2/EngineDataset/WebCollect/20250714-18/xhs/img/xhs_img_2.txt
+# pic_output_folder: /data6/guest/roop/output_0723/pic
+# pic_log_file_pth: /data6/guest/roop/output_0723/pic_log.txt
+
 with open("../config/prompt.yaml", "r", encoding="utf-8") as file:
     config = yaml.safe_load(file)
     AUDIO_DIR = os.path.join(config["root_pth"], r"tmp\audio")
@@ -48,17 +60,17 @@ def init(yaml_file):
 # 在120N，40E部署巴里号驱逐舰，配有5枚民兵3
 # 在(15.812N, 50.7E) 部署朱沃特号驱逐舰，配有5枚战斧巡航导弹，打击目标为纽约
 # 模糊描述
-# 将福特号航空母舰调遣到 (116.391N, 40.042E) 处
+# 将福特号航空母舰部署到 (116.391N, 40.042E) 处
 
 if __name__ == '__main__':
     init(prompt_yaml)
     while True:
         # 部署somthing流程： input -> 识别行为类型 -> 依类型提取信息 -> 标准化名称、转换经纬度 -> 构建xml、修改xml文件
         # 修改somthing流程： input -> 识别行为类型 -> 依类型提取信息 -> 标准化名称、转换经纬度 ->  查找原xml中的标签  -> 构建xml、修改xml文件
-
-        command = input("请输入命令: ")
+        #
+        # command = input("请输入命令: ")
         # command = get_txt_from_audio.get_txt_from_audio()
-        # command = audio2txt_run.record_and_get_txt()  # 调用语音识别模块，返回命令字符串.
+        command = audio2txt_run.record_and_get_txt()  #  调用语音识别模块，返回命令字符串.
         print("命令: ", command)
 
         action_type = int(action_classifier.classify_action(command))
