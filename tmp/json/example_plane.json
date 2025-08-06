@@ -1,7 +1,7 @@
 [
     {
         "name": "F-35",
-        "alias_name": ["Lightning II", "闪电战斗机"],
+        "alias_name": ["Lightning II", "闪电2战斗机"],
         "type": "战斗机",
         "attribute": {
             "speed_mach": 1.6,
