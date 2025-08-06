@@ -113,7 +113,7 @@ def get_info(text, action_type):
             'type': 'json_object'
         }
     )
-    print(response.choices[0].message.content)
+    # print(response.choices[0].message.content)
     return json.loads(response.choices[0].message.content)
 
 

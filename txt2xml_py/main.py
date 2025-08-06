@@ -16,6 +16,7 @@ import yaml
 
 with open("../config/prompt.yaml", "r", encoding="utf-8") as file:
     config = yaml.safe_load(file)
+    enable_asr = config.get("enable_video", False)
     AUDIO_DIR = os.path.join(config["root_pth"], r"tmp\audio")
     ASR_DIR = os.path.join(config["root_pth"], r"txt2xml_py\audio2txt")
     src_xml_file = config["src_xml_file"]
@@ -70,7 +71,12 @@ if __name__ == '__main__':
         #
         # command = input("请输入命令: ")
         # command = get_txt_from_audio.get_txt_from_audio()
-        command = audio2txt_run.record_and_get_txt()  #  调用语音识别模块，返回命令字符串.
+        if enable_asr:
+            # 调用语音识别模块，返回命令字符串.
+            command = audio2txt_run.record_and_get_txt()  #  调用语音识别模块，返回命令字符串.
+        else:
+            command = input("请输入命令: ")
+
         print("命令: ", command)
 
         action_type = int(action_classifier.classify_action(command))
