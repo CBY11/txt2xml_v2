@@ -2,17 +2,6 @@ import json
 import os
 import yaml
 
-# video_folder : /data2/EngineDataset/WebCollect/20250714-18/xhs/video
-# video_list1: /data2/EngineDataset/WebCollect/20250714-18/xhs/video/xhs_video_1.txt
-# video_list2: /data2/EngineDataset/WebCollect/20250714-18/xhs/video/xhs_video_2.txt
-# video_output_folder: /data6/guest/roop/output_0723/video
-# video_log_file_pth: /data6/guest/roop/output_0723/video_log.txt
-#
-# pic_folder : /data2/EngineDataset/WebCollect/20250714-18/xhs/img
-# pic_list1: /data2/EngineDataset/WebCollect/20250714-18/xhs/img/xhs_img_1.txt
-# pic_list2: /data2/EngineDataset/WebCollect/20250714-18/xhs/img/xhs_img_2.txt
-# pic_output_folder: /data6/guest/roop/output_0723/pic
-# pic_log_file_pth: /data6/guest/roop/output_0723/pic_log.txt
 
 with open("../config/prompt.yaml", "r", encoding="utf-8") as file:
     config = yaml.safe_load(file)
