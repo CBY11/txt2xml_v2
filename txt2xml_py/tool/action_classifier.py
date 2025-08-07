@@ -2,7 +2,6 @@
 
 from . import txt2xml_client
 
-client = txt2xml_client.txt2xml_client
 
 classify_action_prompt = f"""
 #### 定位
@@ -41,12 +40,7 @@ classify_action_prompt = f"""
 def classify_action(action_text):
     messages = [{"role": "system", "content": classify_action_prompt},
                 {"role": "user", "content": action_text}]
-    response = client.chat.completions.create(
-        model="deepseek-chat",
-        messages=messages,
-        temperature=0,
-    )
-    return response.choices[0].message.content
+    return txt2xml_client.fast_gen_response(messages, False)
 
 
 if __name__ == '__main__':

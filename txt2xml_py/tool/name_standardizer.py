@@ -3,8 +3,6 @@ import json
 
 from . import txt2xml_client, data_loader
 
-client = txt2xml_client.txt2xml_client
-
 standard_name_list = [
     "tank",
     "soldier",
@@ -42,13 +40,8 @@ name_standardizer_prompt = f"""
 def get_standard_name(name):
     messages = [{"role": "system", "content": name_standardizer_prompt},
                 {"role": "user", "content": name}]
-    response = client.chat.completions.create(
-        model="deepseek-chat",
-        messages=messages,
-        temperature=0,
-    )
-    # print(response)
-    return response.choices[0].message.content
+    return txt2xml_client.fast_gen_response(messages, False)
+
 
 
 def get_standard_obj(name):

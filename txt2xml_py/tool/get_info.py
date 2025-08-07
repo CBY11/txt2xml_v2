@@ -4,8 +4,6 @@ import json
 
 from . import txt2xml_client, action_classifier
 
-client = txt2xml_client.txt2xml_client
-
 get_info_template1 = """
     用户将提供一段文本，提取其中关于结构的信息，并以JSON格式输出。
     EXAMPLE INPUT : 
@@ -105,16 +103,7 @@ get_info_template_list = [
 def get_info(text, action_type):
     messages = [{"role": "system", "content": get_info_template_list[action_type-1]},
                 {"role": "user", "content": text}]
-    response = client.chat.completions.create(
-        model="deepseek-chat",
-        messages=messages,
-        temperature=0,
-        response_format={
-            'type': 'json_object'
-        }
-    )
-    # print(response.choices[0].message.content)
-    return json.loads(response.choices[0].message.content)
+    return json.loads(txt2xml_client.fast_gen_response(messages, True))
 
 
 if __name__ == '__main__':

@@ -41,8 +41,7 @@ for file in file_list:
                         items_name.append([model_alias, model_name])
         # print(items_name)
 
-# 加载大语言模型
-client = txt2xml_client.txt2xml_client
+
 prompt = f"""
 #### 定位
 - 智能助手名称 ：实体提取专家
@@ -113,12 +112,7 @@ def text_to_item(text):
     # Step 1: text to words (大语言模型)
     messages = [{"role": "system", "content": prompt},
                 {"role": "user", "content": text}]
-    response = client.chat.completions.create(
-        model="deepseek-chat",
-        messages=messages,
-        temperature=0,
-    )
-    words = eval(response.choices[0].message.content)
+    words = eval(txt2xml_client.fast_gen_response(messages, False))
     print(words)
     # Step 2 & 3
     res = []

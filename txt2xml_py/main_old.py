@@ -15,7 +15,7 @@ with open("../config/prompt.yaml", "r", encoding="utf-8") as file:
 os.environ['AUDIO_DIR'] = AUDIO_DIR
 os.environ['ASR_DIR'] = ASR_DIR
 
-from tool import action_classifier, get_info, json2xml
+from tool import action_classifier, get_info, json2xml, txt2xml_client
 from tool import name_standardizer_old as name_standardizer
 
 if enable_asr:
@@ -28,6 +28,7 @@ def init(yaml_file):
     # 加载 YAML 配置文件
     with open(yaml_file, "r", encoding="utf-8") as file:
         config = yaml.safe_load(file)
+        txt2xml_client.llm_name = config["llm_name"]
         action_classifier.classify_action_prompt = config["classify_action_prompt_front"] \
                                                    + config["classify_action_prompt_back"]
 
@@ -37,7 +38,6 @@ def init(yaml_file):
             get_info.get_info_template_list.append(template["get_info_template"])
         # print("加载配置文件成功。")
         # print(str(get_info.get_info_template_list))
-
 
         json2xml.json2xml_prompt = config["json2xml_prompt"]
         json2xml.json2xml_modify_prompt = config["json2xml_modify_prompt"]
@@ -62,7 +62,7 @@ if __name__ == '__main__':
 
         if enable_asr:
             # 调用语音识别模块，返回命令字符串.
-            command = audio2txt_run.record_and_get_txt()  #  调用语音识别模块，返回命令字符串.
+            command = audio2txt_run.record_and_get_txt()  # 调用语音识别模块，返回命令字符串.
         else:
             command = input("请输入命令: ")
 
@@ -85,7 +85,7 @@ if __name__ == '__main__':
         #                                                     fields_to_standardize=["longitude", "latitude",
         #                                                                            "old_longitude", "old_latitude"],
         #                                                     standarder=name_standardizer.get_standard_xy)
-        print("信息标准化结果: ",json.dumps(std_info_json, indent=4, ensure_ascii=False))
+        print("信息标准化结果: ", json.dumps(std_info_json, indent=4, ensure_ascii=False))
         print(
             "========================================================================================================")
 
