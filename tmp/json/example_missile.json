@@ -16,7 +16,7 @@
     },
     {
         "name": "BGM-109",
-        "alias_name": ["战斧巡航导弹"],
+        "alias_name": ["战斧", "战斧巡航导弹"],
         "type": "导弹",
         "attribute": {
             "on_land": false,

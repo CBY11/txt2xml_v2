@@ -25,5 +25,11 @@
             "port": true,
             "airport": false
         }
+    },
+    {
+        "name": "MCAS Futenma",
+        "alias_name": ["普天间基地"],
+        "type": "基地",
+        "attribute": {}
     }
 ]
