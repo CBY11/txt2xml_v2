@@ -30,21 +30,22 @@ def gen_response_webapi_dpv3(messages, json_format):
 
 def gen_response_ollama_dp32b(messages, response_format):
     if response_format:
-        response = ollama.create(
+        response = ollama.chat(
             model='deepseek-r1:32b',
             messages=messages,
+            think=False,
+            format='json',
             options={'temperature': 0}
         )
         return response['message']['content']
     else:
-        response = ollama.create(
+        response = ollama.chat(
             model='deepseek-r1:32b',
             messages=messages,
-            format='json',
+            think=False,
             options={'temperature': 0},
         )
         return response['message']['content']
-
 
 def fast_gen_response(messages, json_format):
     if llm_name == "webapi_dpv3":
@@ -52,3 +53,4 @@ def fast_gen_response(messages, json_format):
     elif llm_name == "ollama_dp32b":
         return gen_response_ollama_dp32b(messages, json_format)
     return "fail"
+
