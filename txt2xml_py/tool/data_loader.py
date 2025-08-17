@@ -1,9 +1,8 @@
 import json
 import os
 
-from sentence_transformers import SentenceTransformer
-import faiss
-import numpy as np
+import ollama
+import chromadb
 
 from . import txt2xml_client
 
@@ -11,7 +10,7 @@ from . import txt2xml_client
 items = []
 items_name = []
 name_list = []
-item_dir = "../tmp/json"
+item_dir = "../../tmp/json"
 file_list = os.listdir(item_dir)
 for file in file_list:
     with open(os.path.join(item_dir, file), "r", encoding="utf-8") as f:
@@ -28,6 +27,7 @@ for file in file_list:
                 tmp = item['sub_model']
                 del item['sub_model']
                 items.append(item)
+                name_list.append(name)
                 for alias in item['alias_name']:
                     name_list.append(alias)
                     items_name.append([alias, name])
@@ -39,6 +39,7 @@ for file in file_list:
                     for model_alias in model['alias_name']:
                         name_list.append(model_alias)
                         items_name.append([model_alias, model_name])
+print(name_list)
         # print(items_name)
 
 
@@ -71,32 +72,52 @@ prompt = f"""
     """
 
 # 加载向量数据库
-model = SentenceTransformer('all-MiniLM-L6-v2')
-# 计算向量表示
-name_vectors = model.encode(name_list, show_progress_bar=False)
-# 构建 FAISS 索引
-index = faiss.IndexFlatL2(name_vectors.shape[1])
-index.add(np.array(name_vectors))
+embedding_model = "quentinz/bge-large-zh-v1.5"
 
-# 查询阈值，置信度低于该值者舍去，0表示无论如何不舍去
-limit = 0
+chroma = chromadb.Client()
+collection = chroma.create_collection(name="my_collection")
+for i in range(0, len(name_list)):
+    name = name_list[i]
+    embed = ollama.embeddings(model=embedding_model, prompt=name)['embedding']
+    collection.add(
+        documents=[name],
+        embeddings=[embed],
+        ids=f"{i}"
+    )
 
+# model = SentenceTransformer('../bge-large-zh-v1.5')
+# # 计算向量表示
+# name_vectors = model.encode(name_list, show_progress_bar=False)
+# # 构建 FAISS 索引
+# index = faiss.IndexFlatL2(name_vectors.shape[1])
+# index.add(np.array(name_vectors))
+
+# limit = 0  查询阈值，暂不设置
 
 def single_word_to_item(word):
     # Step 2: words to name of items (向量数据库)
     if word is None or word == '':
         return None
     # print(query)
-    query_vector = model.encode([word])
-    # 检索最相关文档
-    D, I = index.search(np.array(query_vector), k=1)
-    item_name, value = name_list[I[0][0]], D[0][0]
-    print(item_name, value)
-    if value > limit:
-        real_name = item_name
-    else:
-        print("低于阈值，舍去！")
-        return None
+    # query_vector = model.encode([word])
+    # # 检索最相关文档
+    # D, I = index.search(np.array(query_vector), k=1)
+    # item_name, value = name_list[I[0][0]], D[0][0]
+    # print(word, item_name, value)
+    # if value > limit:
+    #     real_name = item_name
+    # else:
+    #     print("低于阈值，舍去！")
+    #     return None
+    query_embed = ollama.embeddings(model=embedding_model, prompt=word)['embedding']
+    results = collection.query(
+        query_embeddings=[query_embed],
+        n_results=3,  # 返回3个最相关知识块
+        include=["documents", "distances"]
+    )
+    item_name, distance = results['documents'][0], results['distances'][0]
+    print(word, item_name, distance)
+    real_name = item_name[0]
     # Step 3: name of items to item
     for n in items_name:
         if n[0] == real_name:
@@ -124,5 +145,3 @@ def text_to_item(text):
 
 
 if __name__ == '__main__':
-    input = "在 (116.391N, 40.042E) 处部署福特号航母，配有10架闪电2及20架民兵3导弹发射器"
-    print(text_to_item(input))
