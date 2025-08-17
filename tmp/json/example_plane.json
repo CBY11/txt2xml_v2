@@ -36,5 +36,131 @@
                 }
             }
         ]
+    },
+    {
+        "name": "F-22",
+        "alias_name": ["猛禽"],
+        "type": "战斗机",
+        "attribute": {}
+    },
+    {
+        "name": "F/A-18",
+        "alias_name": ["大黄蜂"],
+        "type": "战斗机",
+        "attribute": {}
+    },
+    {
+        "name": "F-15",
+        "alias_name": ["鹰"],
+        "type": "战斗机",
+        "attribute": {}
+    },
+    {
+        "name": "F-16",
+        "alias_name": ["战隼"],
+        "type": "战斗机",
+        "attribute": {}
+    },
+    {
+        "name": "B-2",
+        "alias_name": ["幽灵"],
+        "type": "轰炸机",
+        "attribute": {}
+    },
+    {
+        "name": "B-1B",
+        "alias_name": ["枪骑兵"],
+        "type": "轰炸机",
+        "attribute": {}
+    },
+    {
+        "name": "B-52",
+        "alias_name": ["同温层堡垒"],
+        "type": "轰炸机",
+        "attribute": {}
+    },
+    {
+        "name": "J10",
+        "alias_name": ["歼10", "猛龙"],
+        "type": "战斗机",
+        "attribute": {},
+        "sub_model": [
+            {
+                "name": "J10C",
+                "alias_name": ["歼10C"],
+                "attribute": {
+                    "on_ship": true
+                }
+            }
+        ]
+    },
+    {
+        "name": "J11",
+        "alias_name": ["歼11", "应龙"],
+        "type": "战斗机",
+        "attribute": {}
+    },
+    {
+        "name": "J15",
+        "alias_name": ["歼15", "飞鲨"],
+        "type": "战斗机",
+        "attribute": {}
+    },
+    {
+        "name": "J16",
+        "alias_name": ["歼16", "潜龙"],
+        "type": "战斗机",
+        "attribute": {},
+        "sub_model": [
+            {
+                "name": "J16D",
+                "alias_name": ["歼16D"],
+                "attribute": {}
+            }
+        ]
+    },
+    {
+        "name": "J20",
+        "alias_name": ["歼20", "威龙"],
+        "type": "战斗机",
+        "attribute": {}
+    },
+    {
+        "name": "J35",
+        "alias_name": ["歼35"],
+        "type": "战斗机",
+        "attribute": {},
+        "sub_model": [
+            {
+                "name": "J35A",
+                "alias_name": ["歼35A"],
+                "attribute": {
+                    "on_ship": true
+                }
+            }
+        ]
+    },
+    {
+        "name": "H6",
+        "alias_name": ["轰6"],
+        "type": "轰炸机",
+        "attribute": {},
+        "sub_model": [
+            {
+                "name": "H6K",
+                "alias_name": ["轰6K", "战神"],
+                "attribute": {}
+            },
+            {
+                "name": "H6J",
+                "alias_name": ["轰6J"],
+                "attribute": {}
+            },
+            {
+                "name": "H6N",
+                "alias_name": ["轰6N", "雷神"],
+                "attribute": {}
+            }
+        ]
     }
 ]

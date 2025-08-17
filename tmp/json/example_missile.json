@@ -1,5 +1,122 @@
 [
     {
+        "name": "PL-12",
+        "alias_name": ["霹雳12"],
+        "type": "导弹",
+        "attribute": {}
+    },
+    {
+        "name": "PL-15",
+        "alias_name": ["霹雳15"],
+        "type": "导弹",
+        "attribute": {}
+    },
+    {
+        "name": "HQ-9",
+        "alias_name": ["红旗9"],
+        "type": "导弹",
+        "attribute": {}
+    },
+    {
+        "name": "HHQ-9B",
+        "alias_name": ["海红旗9B"],
+        "type": "导弹",
+        "attribute": {}
+    },
+    {
+        "name": "HQ-16",
+        "alias_name": ["红旗16"],
+        "type": "导弹",
+        "attribute": {}
+    },
+    {
+        "name": "YJ-12",
+        "alias_name": ["鹰击12"],
+        "type": "导弹",
+        "attribute": {}
+    },
+    {
+        "name": "YJ-18",
+        "alias_name": ["鹰击18"],
+        "type": "导弹",
+        "attribute": {}
+    },
+    {
+        "name": "DF-21",
+        "alias_name": ["东风21"],
+        "type": "导弹",
+        "attribute": {}
+    },
+    {
+        "name": "DF-17",
+        "alias_name": ["东风17"],
+        "type": "导弹",
+        "attribute": {
+            "on_land": true,
+            "on_ship": false,
+            "on_plane": false,
+            "to_land": true,
+            "to_ship": false,
+            "to_plane": false
+        }
+    },
+    {
+        "name": "DF-100",
+        "alias_name": ["东风100", "长剑100"],
+        "type": "导弹",
+        "attribute": {
+            "on_land": true,
+            "on_ship": false,
+            "on_plane": false,
+            "to_land": true,
+            "to_ship": false,
+            "to_plane": false
+        }
+    },
+    {
+        "name": "DF-26",
+        "alias_name": ["东风26"],
+        "type": "导弹",
+        "attribute": {
+            "on_land": true,
+            "on_ship": false,
+            "on_plane": false,
+            "to_land": true,
+            "to_ship": false,
+            "to_plane": false
+        }
+    },
+    {
+        "name": "JL-1",
+        "alias_name": ["巨浪1"],
+        "type": "导弹",
+        "attribute": {}
+    },
+    {
+        "name": "JL-2",
+        "alias_name": ["巨浪2"],
+        "type": "导弹",
+        "attribute": {}
+    },
+    {
+        "name": "DF-31AG",
+        "alias_name": ["东风31AG", "东风31甲改"],
+        "type": "导弹",
+        "attribute": {}
+    },
+    {
+        "name": "DF-5B",
+        "alias_name": ["东风5B"],
+        "type": "导弹",
+        "attribute": {}
+    },
+    {
+        "name": "DF-41",
+        "alias_name": ["东风41"],
+        "type": "导弹",
+        "attribute": {}
+    },
+    {
         "name": "LGM-30G",
         "alias_name": ["Minuteman III", "民兵3"],
         "type": "导弹",
