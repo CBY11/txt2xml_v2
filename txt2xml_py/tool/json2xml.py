@@ -6,7 +6,6 @@ from bs4 import BeautifulSoup
 
 from . import txt2xml_client
 
-client = txt2xml_client.txt2xml_client
 find_op_action_list = [4]
 
 json2xml_prompt = """
@@ -161,12 +160,7 @@ def extract_xml_from_string(input_string):
 def json2xml(json_obj):
     messages = [{"role": "system", "content": json2xml_prompt},
                 {"role": "user", "content": str(json_obj)}]
-    response = client.chat.completions.create(
-        model="deepseek-chat",
-        messages=messages,
-        temperature=0,
-    )
-    return response.choices[0].message.content
+    return txt2xml_client.fast_gen_response(messages, False)
 
 
 def json2xml_modify(json_obj, old_xml_str):
@@ -177,12 +171,7 @@ def json2xml_modify(json_obj, old_xml_str):
                     xml:
                     {old_xml_str}
                     """}]
-    response = client.chat.completions.create(
-        model="deepseek-chat",
-        messages=messages,
-        temperature=0,
-    )
-    return response.choices[0].message.content
+    return txt2xml_client.fast_gen_response(messages, False)
 
 
 def modify_xml(json_obj, src_xml_file_path, xml_file_path):
@@ -223,6 +212,7 @@ def modify_xml(json_obj, src_xml_file_path, xml_file_path):
         file.write(str(soup))
 
     print("XML 内容已修改并保存。")
+    return xml_str
 
 
 if __name__ == '__main__':

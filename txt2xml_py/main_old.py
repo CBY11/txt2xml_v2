@@ -5,6 +5,7 @@ import yaml
 with open("../config/prompt.yaml", "r", encoding="utf-8") as file:
     config = yaml.safe_load(file)
     enable_asr = config.get("enable_video", False)
+    enable_loop_chat = config.get("enable_loop_chat", False)
     AUDIO_DIR = os.path.join(config["root_pth"], r"tmp\audio")
     ASR_DIR = os.path.join(config["root_pth"], r"txt2xml_py\audio2txt")
     src_xml_file = config["src_xml_file"]
@@ -15,7 +16,7 @@ with open("../config/prompt.yaml", "r", encoding="utf-8") as file:
 os.environ['AUDIO_DIR'] = AUDIO_DIR
 os.environ['ASR_DIR'] = ASR_DIR
 
-from tool import action_classifier, get_info, json2xml
+from tool import action_classifier, get_info, json2xml, txt2xml_client, simple_chat, feedback_module
 from tool import name_standardizer_old as name_standardizer
 
 if enable_asr:
@@ -28,6 +29,10 @@ def init(yaml_file):
     # 加载 YAML 配置文件
     with open(yaml_file, "r", encoding="utf-8") as file:
         config = yaml.safe_load(file)
+        txt2xml_client.llm_name = config["llm_name"]
+        simple_chat.simple_chat_prompt = config["simple_chat_prompt"]
+        simple_chat.simple_chat_sys_prompt = config["simple_chat_sys_prompt"]
+        simple_chat.simple_chat_loop_prompt = config["simple_chat_loop_prompt"]
         action_classifier.classify_action_prompt = config["classify_action_prompt_front"] \
                                                    + config["classify_action_prompt_back"]
 
@@ -37,7 +42,6 @@ def init(yaml_file):
             get_info.get_info_template_list.append(template["get_info_template"])
         # print("加载配置文件成功。")
         # print(str(get_info.get_info_template_list))
-
 
         json2xml.json2xml_prompt = config["json2xml_prompt"]
         json2xml.json2xml_modify_prompt = config["json2xml_modify_prompt"]
@@ -57,16 +61,31 @@ def init(yaml_file):
 if __name__ == '__main__':
     init(prompt_yaml)
     while True:
-        # 部署somthing流程： input -> 识别行为类型 -> 依类型提取信息 -> 标准化名称、转换经纬度 -> 构建xml、修改xml文件
-        # 修改somthing流程： input -> 识别行为类型 -> 依类型提取信息 -> 标准化名称、转换经纬度 ->  查找原xml中的标签  -> 构建xml、修改xml文件
+        # 部署somthing流程： input -> 识别行为类型 -> 依类型提取信息
+        # -> 标准化名称、转换经纬度 -> 构建xml、修改xml文件
+        # -> 接受用户反馈
+        # 修改somthing流程： input -> 识别行为类型 -> 依类型提取信息
+        # -> 标准化名称、转换经纬度 ->  查找原xml中的标签  -> 构建xml、修改xml文件
+        # -> 接受用户反馈
 
         if enable_asr:
-            # 调用语音识别模块，返回命令字符串.
-            command = audio2txt_run.record_and_get_txt()  #  调用语音识别模块，返回命令字符串.
+            input_getter = audio2txt_run.record_and_get_txt
         else:
-            command = input("请输入命令: ")
+            input_getter = input
 
-        print("命令: ", command)
+        if enable_loop_chat:
+            # 开启多轮对话
+            command = simple_chat.start_chat(input_getter)
+        else:
+            command = input_getter("请输入命令： ")
+
+        print(
+            "========================================================================================================\n" +
+            "========================================================================================================")
+
+        print("最终命令识别结果： ", command)
+        print(
+            "========================================================================================================")
 
         action_type = int(action_classifier.classify_action(command))
         print("行为类型识别结果: ", action_type)
@@ -81,15 +100,16 @@ if __name__ == '__main__':
         std_info_json = name_standardizer.get_standard_json(example_json_obj, info_json,
                                                             fields_to_standardize=["object_name"],
                                                             standarder=name_standardizer.get_standard_obj)
-        # std_info_json = name_standardizer.get_standard_json(std_info_json,
-        #                                                     fields_to_standardize=["longitude", "latitude",
-        #                                                                            "old_longitude", "old_latitude"],
-        #                                                     standarder=name_standardizer.get_standard_xy)
-        print("信息标准化结果: ",json.dumps(std_info_json, indent=4, ensure_ascii=False))
+        print("信息标准化结果: ", json.dumps(std_info_json, indent=4, ensure_ascii=False))
         print(
             "========================================================================================================")
 
-        json2xml.modify_xml(std_info_json, src_xml_file, dest_xml_file)
+        final_xml_str = json2xml.modify_xml(std_info_json, src_xml_file, dest_xml_file)
         print("命令已执行。")
+        print(
+            "========================================================================================================")
+
+        score = input("请对本次修改进行评价 (1-5分，5分最满意): ")
+        feedback_module.feedback(command, final_xml_str, score)
         print(
             "========================================================================================================")
