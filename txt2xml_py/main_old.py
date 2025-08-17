@@ -16,7 +16,7 @@ with open("../config/prompt.yaml", "r", encoding="utf-8") as file:
 os.environ['AUDIO_DIR'] = AUDIO_DIR
 os.environ['ASR_DIR'] = ASR_DIR
 
-from tool import action_classifier, get_info, json2xml, txt2xml_client, simple_chat
+from tool import action_classifier, get_info, json2xml, txt2xml_client, simple_chat, feedback_module
 from tool import name_standardizer_old as name_standardizer
 
 if enable_asr:
@@ -61,8 +61,12 @@ def init(yaml_file):
 if __name__ == '__main__':
     init(prompt_yaml)
     while True:
-        # 部署somthing流程： input -> 识别行为类型 -> 依类型提取信息 -> 标准化名称、转换经纬度 -> 构建xml、修改xml文件
-        # 修改somthing流程： input -> 识别行为类型 -> 依类型提取信息 -> 标准化名称、转换经纬度 ->  查找原xml中的标签  -> 构建xml、修改xml文件
+        # 部署somthing流程： input -> 识别行为类型 -> 依类型提取信息
+        # -> 标准化名称、转换经纬度 -> 构建xml、修改xml文件
+        # -> 接受用户反馈
+        # 修改somthing流程： input -> 识别行为类型 -> 依类型提取信息
+        # -> 标准化名称、转换经纬度 ->  查找原xml中的标签  -> 构建xml、修改xml文件
+        # -> 接受用户反馈
 
         if enable_asr:
             input_getter = audio2txt_run.record_and_get_txt
@@ -100,7 +104,12 @@ if __name__ == '__main__':
         print(
             "========================================================================================================")
 
-        json2xml.modify_xml(std_info_json, src_xml_file, dest_xml_file)
+        final_xml_str = json2xml.modify_xml(std_info_json, src_xml_file, dest_xml_file)
         print("命令已执行。")
+        print(
+            "========================================================================================================")
+
+        score = input("请对本次修改进行评价 (1-5分，5分最满意): ")
+        feedback_module.feedback(command, final_xml_str, score)
         print(
             "========================================================================================================")
