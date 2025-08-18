@@ -4,10 +4,11 @@ import yaml
 
 with open("../config/prompt.yaml", "r", encoding="utf-8") as file:
     config = yaml.safe_load(file)
-    enable_asr = config.get("enable_video", False)
+    enable_asr = config.get("enable_audio", False)
     enable_loop_chat = config.get("enable_loop_chat", False)
     AUDIO_DIR = os.path.join(config["root_pth"], r"tmp\audio")
     ASR_DIR = os.path.join(config["root_pth"], r"txt2xml_py\audio2txt")
+    ITEM_DIR = config.get("item_dir")
     src_xml_file = config["src_xml_file"]
     dest_xml_file = config["dest_xml_file"]
     prompt_yaml = config["prompt_yaml"]
@@ -15,9 +16,10 @@ with open("../config/prompt.yaml", "r", encoding="utf-8") as file:
 
 os.environ['AUDIO_DIR'] = AUDIO_DIR
 os.environ['ASR_DIR'] = ASR_DIR
+os.environ['ITEM_DIR'] = ITEM_DIR
 
 from tool import action_classifier, get_info, json2xml, txt2xml_client, simple_chat, feedback_module
-from tool import name_standardizer_old as name_standardizer
+from tool import name_standardizer
 
 if enable_asr:
     from audio2txt import audio2txt_run
@@ -97,7 +99,7 @@ if __name__ == '__main__':
         print(
             "========================================================================================================")
 
-        std_info_json = name_standardizer.get_standard_json(example_json_obj, info_json,
+        std_info_json = name_standardizer.get_standard_json(info_json,
                                                             fields_to_standardize=["object_name"],
                                                             standarder=name_standardizer.get_standard_obj)
         print("信息标准化结果: ", json.dumps(std_info_json, indent=4, ensure_ascii=False))

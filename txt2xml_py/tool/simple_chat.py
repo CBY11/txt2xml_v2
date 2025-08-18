@@ -16,7 +16,7 @@ def start_chat(input_getter=input, ):
         messages = [{"role": "system", "content": simple_chat_loop_prompt},
                     {"role": "user", "content": history_messages}]
         response = txt2xml_client.fast_gen_response(messages, True)
-        print(response)
+        # print(response)
         response = json.loads(response)
         if response["command_is_clear"]:
             break

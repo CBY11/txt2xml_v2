@@ -43,7 +43,6 @@ def get_standard_name(name):
     return txt2xml_client.fast_gen_response(messages, False)
 
 
-
 def get_standard_obj(name):
     item = data_loader.single_word_to_item(name)
     if item is None:

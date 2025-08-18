@@ -10,7 +10,7 @@ from . import txt2xml_client
 items = []
 items_name = []
 name_list = []
-item_dir = "../../tmp/json"
+item_dir = os.environ.get("ITEM_DIR")
 file_list = os.listdir(item_dir)
 for file in file_list:
     with open(os.path.join(item_dir, file), "r", encoding="utf-8") as f:

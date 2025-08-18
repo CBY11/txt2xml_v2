@@ -100,10 +100,11 @@ get_info_template4 = """
 get_info_template_list = [
 ]
 
+
 def get_info(text, action_type):
-    messages = [{"role": "system", "content": get_info_template_list[action_type-1]},
+    messages = [{"role": "system", "content": get_info_template_list[action_type - 1]},
                 {"role": "user", "content": text}]
-    return json.loads(txt2xml_client.fast_gen_response(messages, True))
+    return json.loads((txt2xml_client.fast_gen_response(messages, True)).replace("\'", "\""))
 
 
 if __name__ == '__main__':
