@@ -132,6 +132,12 @@
         }
     },
     {
+        "name": "LGM-118",
+        "alias_name": ["和平卫士"],
+        "type": "导弹",
+        "attribute": {}
+    },
+    {
         "name": "BGM-109",
         "alias_name": ["战斧", "战斧巡航导弹"],
         "type": "导弹",
@@ -143,5 +149,41 @@
             "to_ship": false,
             "to_plane": false
         }
+    },
+    {
+        "name": "UGM-96A",
+        "alias_name": ["三叉戟1"],
+        "type": "导弹",
+        "attribute": {}
+    },
+    {
+        "name": "UGM-133",
+        "alias_name": ["三叉戟2"],
+        "type": "导弹",
+        "attribute": {}
+    },
+    {
+        "name": "AIM-120",
+        "alias_name": [],
+        "type": "导弹",
+        "attribute": {}
+    },
+    {
+        "name": "MIM-104",
+        "alias_name": ["爱国者防空导弹"],
+        "type": "导弹",
+        "attribute": {}
+    },
+    {
+        "name": "RIM-66 SM-2MR",
+        "alias_name": ["标准2"],
+        "type": "导弹",
+        "attribute": {}
+    },
+    {
+        "name": "THAAD",
+        "alias_name": ["萨德反导系统"],
+        "type": "导弹",
+        "attribute": {}
     }
 ]

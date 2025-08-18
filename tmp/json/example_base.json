@@ -31,5 +31,83 @@
         "alias_name": ["普天间基地"],
         "type": "基地",
         "attribute": {}
+    },
+    {
+        "name": "USFA Sasebo",
+        "alias_name": ["佐世保海军基地"],
+        "type": "基地",
+        "attribute": {}
+    },
+    {
+        "name": "Yokota AB",
+        "alias_name": ["横田空军基地"],
+        "type": "基地",
+        "attribute": {}
+    },
+    {
+        "name": "Misawa AB",
+        "alias_name": ["三泽空军基地"],
+        "type": "基地",
+        "attribute": {}
+    },
+    {
+        "name": "Camp Zama",
+        "alias_name": ["座间基地", "座间兵营"],
+        "type": "基地",
+        "attribute": {}
+    },
+    {
+        "name": "NAF Atsugi",
+        "alias_name": ["厚木海军航空基地"],
+        "type": "基地",
+        "attribute": {}
+    },
+    {
+        "name": "MCAS Iwakuni",
+        "alias_name": ["岩国基地"],
+        "type": "基地",
+        "attribute": {}
+    },
+    {
+        "name": "Kure Naval Base",
+        "alias_name": ["吴港海军基地"],
+        "type": "基地",
+        "attribute": {}
+    },
+    {
+        "name": "USAG Yongsan-Casey",
+        "alias_name": ["龙山基地"],
+        "type": "基地",
+        "attribute": {}
+    },
+    {
+        "name": "Osan AB",
+        "alias_name": ["乌山空军基地"],
+        "type": "基地",
+        "attribute": {}
+    },
+    {
+        "name": "Kunsan AB",
+        "alias_name": ["群山空军基地"],
+        "type": "基地",
+        "attribute": {}
+    },
+    {
+        "name": "USAG Daegu",
+        "alias_name": ["大邱基地"],
+        "type": "基地",
+        "attribute": {}
+    },
+    {
+        "name": "USFA Chinhae",
+        "alias_name": ["镇海海军基地"],
+        "type": "基地",
+        "attribute": {}
+    },
+    {
+        "name": "Camp Humphreys",
+        "alias_name": ["汉弗莱斯兵营"],
+        "type": "基地",
+        "attribute": {}
     }
 ]

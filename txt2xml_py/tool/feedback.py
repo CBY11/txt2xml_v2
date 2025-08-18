@@ -6,7 +6,7 @@ import random
 # 3. 取样策略
 
 num_samples = 1     # few_shot提取正反样例的个数
-list_positive, list_negative = [], []   # 每项样例为一个含"input""output"字段的字典
+list_positive, list_negative = [], []   # 每项样例为一个含"input""output"字段的字典，可预设
 
 # 从样例列表中获取写入提示词的样例（目前采用随机策略）
 def get_sample():

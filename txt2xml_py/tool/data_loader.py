@@ -144,4 +144,5 @@ def text_to_item(text):
     return res
 
 
-if __name__ == '__main__':
+# if __name__ == '__main__':
+#     print(single_word_to_item("福建舰"))

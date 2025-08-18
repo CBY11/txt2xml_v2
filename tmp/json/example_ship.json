@@ -1,6 +1,325 @@
 [
     {
-        "name": "CVN78",
+        "name": "16",
+        "alias_name": ["辽宁舰"],
+        "type": "舰船",
+        "attribute": {}
+    },
+    {
+        "name": "17",
+        "alias_name": ["山东舰"],
+        "type": "舰船",
+        "attribute": {}
+    },
+    {
+        "name": "18",
+        "alias_name": ["福建舰"],
+        "type": "舰船",
+        "attribute": {}
+    },
+    {
+        "name": "101",
+        "alias_name": ["南昌舰"],
+        "type": "舰船",
+        "type_name": "055型驱逐舰",
+        "attribute": {}
+    },
+    {
+        "name": "102",
+        "alias_name": ["拉萨舰"],
+        "type": "舰船",
+        "type_name": "055型驱逐舰",
+        "attribute": {}
+    },
+    {
+        "name": "103",
+        "alias_name": ["鞍山舰"],
+        "type": "舰船",
+        "type_name": "055型驱逐舰",
+        "attribute": {}
+    },
+    {
+        "name": "104",
+        "alias_name": ["无锡舰"],
+        "type": "舰船",
+        "type_name": "055型驱逐舰",
+        "attribute": {}
+    },
+    {
+        "name": "105",
+        "alias_name": ["大连舰"],
+        "type": "舰船",
+        "type_name": "055型驱逐舰",
+        "attribute": {}
+    },
+    {
+        "name": "106",
+        "alias_name": ["延安舰"],
+        "type": "舰船",
+        "type_name": "055型驱逐舰",
+        "attribute": {}
+    },
+    {
+        "name": "107",
+        "alias_name": ["遵义舰"],
+        "type": "舰船",
+        "type_name": "055型驱逐舰",
+        "attribute": {}
+    },
+    {
+        "name": "108",
+        "alias_name": ["咸阳舰"],
+        "type": "舰船",
+        "type_name": "055型驱逐舰",
+        "attribute": {}
+    },
+    {
+        "name": "117",
+        "alias_name": ["西宁舰"],
+        "type": "舰船",
+        "type_name": "052D型导弹驱逐舰",
+        "attribute": {}
+    },
+    {
+        "name": "118",
+        "alias_name": ["乌鲁木齐舰"],
+        "type": "舰船",
+        "type_name": "052D型导弹驱逐舰",
+        "attribute": {}
+    },
+    {
+        "name": "119",
+        "alias_name": ["贵阳舰"],
+        "type": "舰船",
+        "type_name": "052D型导弹驱逐舰",
+        "attribute": {}
+    },
+    {
+        "name": "154",
+        "alias_name": ["厦门舰"],
+        "type": "舰船",
+        "type_name": "052D型导弹驱逐舰",
+        "attribute": {}
+    },
+    {
+        "name": "172",
+        "alias_name": ["昆明舰"],
+        "type": "舰船",
+        "type_name": "052D型导弹驱逐舰",
+        "attribute": {}
+    },
+    {
+        "name": "173",
+        "alias_name": ["长沙舰"],
+        "type": "舰船",
+        "type_name": "052D型导弹驱逐舰",
+        "attribute": {}
+    },
+    {
+        "name": "174",
+        "alias_name": ["合肥舰"],
+        "type": "舰船",
+        "type_name": "052D型导弹驱逐舰",
+        "attribute": {}
+    },
+    {
+        "name": "175",
+        "alias_name": ["银川舰"],
+        "type": "舰船",
+        "type_name": "052D型导弹驱逐舰",
+        "attribute": {}
+    },
+    {
+        "name": "120",
+        "alias_name": ["成都舰"],
+        "type": "舰船",
+        "type_name": "052D型导弹驱逐舰",
+        "attribute": {}
+    },
+    {
+        "name": "121",
+        "alias_name": ["齐齐哈尔舰"],
+        "type": "舰船",
+        "type_name": "052D型导弹驱逐舰",
+        "attribute": {}
+    },
+    {
+        "name": "131",
+        "alias_name": ["太原舰"],
+        "type": "舰船",
+        "type_name": "052D型导弹驱逐舰",
+        "attribute": {}
+    },
+    {
+        "name": "155",
+        "alias_name": ["南京舰"],
+        "type": "舰船",
+        "type_name": "052D型导弹驱逐舰",
+        "attribute": {}
+    },
+    {
+        "name": "161",
+        "alias_name": ["呼和浩特舰"],
+        "type": "舰船",
+        "type_name": "052D型导弹驱逐舰",
+        "attribute": {}
+    },
+    {
+        "name": "122",
+        "alias_name": ["唐山舰"],
+        "type": "舰船",
+        "type_name": "052D型导弹驱逐舰",
+        "attribute": {}
+    },
+    {
+        "name": "123",
+        "alias_name": ["淮南舰"],
+        "type": "舰船",
+        "type_name": "052D型导弹驱逐舰",
+        "attribute": {}
+    },
+    {
+        "name": "124",
+        "alias_name": ["开封舰"],
+        "type": "舰船",
+        "type_name": "052D型导弹驱逐舰",
+        "attribute": {}
+    },
+    {
+        "name": "132",
+        "alias_name": ["苏州舰"],
+        "type": "舰船",
+        "type_name": "052D型导弹驱逐舰",
+        "attribute": {}
+    },
+    {
+        "name": "133",
+        "alias_name": ["包头舰"],
+        "type": "舰船",
+        "type_name": "052D型导弹驱逐舰",
+        "attribute": {}
+    },
+    {
+        "name": "134",
+        "alias_name": ["绍兴舰"],
+        "type": "舰船",
+        "type_name": "052D型导弹驱逐舰",
+        "attribute": {}
+    },
+    {
+        "name": "156",
+        "alias_name": ["淄博舰"],
+        "type": "舰船",
+        "type_name": "052D型导弹驱逐舰",
+        "attribute": {}
+    },
+    {
+        "name": "157",
+        "alias_name": ["丽水舰"],
+        "type": "舰船",
+        "type_name": "052D型导弹驱逐舰",
+        "attribute": {}
+    },
+    {
+        "name": "162",
+        "alias_name": ["南宁舰"],
+        "type": "舰船",
+        "type_name": "052D型导弹驱逐舰",
+        "attribute": {}
+    },
+    {
+        "name": "163",
+        "alias_name": ["焦作舰"],
+        "type": "舰船",
+        "type_name": "052D型导弹驱逐舰",
+        "attribute": {}
+    },
+    {
+        "name": "164",
+        "alias_name": ["桂林舰"],
+        "type": "舰船",
+        "type_name": "052D型导弹驱逐舰",
+        "attribute": {}
+    },
+    {
+        "name": "165",
+        "alias_name": ["湛江舰"],
+        "type": "舰船",
+        "type_name": "052D型导弹驱逐舰",
+        "attribute": {}
+    },
+    {
+        "name": "CVN-68",
+        "alias_name": ["尼米兹号航空母舰"],
+        "type": "舰船",
+        "type_name": "尼米兹级航空母舰",
+        "attribute": {}
+    },
+    {
+        "name": "CVN-69",
+        "alias_name": ["德怀特·D·艾森豪威尔号航空母舰", "艾森豪威尔号"],
+        "type": "舰船",
+        "type_name": "尼米兹级航空母舰",
+        "attribute": {}
+    },
+    {
+        "name": "CVN-70",
+        "alias_name": ["卡尔·文森号航空母舰"],
+        "type": "舰船",
+        "type_name": "尼米兹级航空母舰",
+        "attribute": {}
+    },
+    {
+        "name": "CVN-71",
+        "alias_name": ["西奥多·罗斯福号航空母舰"],
+        "type": "舰船",
+        "type_name": "尼米兹级航空母舰",
+        "attribute": {}
+    },
+    {
+        "name": "CVN-72",
+        "alias_name": ["亚伯拉罕·林肯号航空母舰"],
+        "type": "舰船",
+        "type_name": "尼米兹级航空母舰",
+        "attribute": {}
+    },
+    {
+        "name": "CVN-73",
+        "alias_name": ["乔治·华盛顿号航空母舰"],
+        "type": "舰船",
+        "type_name": "尼米兹级航空母舰",
+        "attribute": {}
+    },
+    {
+        "name": "CVN-74",
+        "alias_name": ["约翰·C·斯坦尼斯号航空母舰"],
+        "type": "舰船",
+        "type_name": "尼米兹级航空母舰",
+        "attribute": {}
+    },
+    {
+        "name": "CVN-75",
+        "alias_name": ["哈里·S·杜鲁门号航空母舰"],
+        "type": "舰船",
+        "type_name": "尼米兹级航空母舰",
+        "attribute": {}
+    },
+    {
+        "name": "CVN-76",
+        "alias_name": ["罗纳德·里根号航空母舰"],
+        "type": "舰船",
+        "type_name": "尼米兹级航空母舰",
+        "attribute": {}
+    },
+    {
+        "name": "CVN-77",
+        "alias_name": ["乔治·H·W·布什号航空母舰"],
+        "type": "舰船",
+        "type_name": "尼米兹级航空母舰",
+        "attribute": {}
+    },
+    {
+        "name": "CVN-78",
         "alias_name": ["杰拉尔德·R·福特号航空母舰", "福特号航空母舰"],
         "type": "舰船",
         "type_name": "福特级航空母舰",
@@ -34,6 +353,139 @@
         }
     },
     {
+        "name": "DDG-53",
+        "alias_name": ["约翰·保罗·琼斯号"],
+        "type": "舰船",
+        "type_name": "阿利·伯克级驱逐舰",
+        "attribute": {}
+    },
+    {
+        "name": "DDG-54",
+        "alias_name": ["柯蒂斯·威尔伯号"],
+        "type": "舰船",
+        "type_name": "阿利·伯克级驱逐舰",
+        "attribute": {}
+    },
+    {
+        "name": "DDG-55",
+        "alias_name": ["斯托特号"],
+        "type": "舰船",
+        "type_name": "阿利·伯克级驱逐舰",
+        "attribute": {}
+    },
+    {
+        "name": "DDG-56",
+        "alias_name": ["约翰·麦凯恩号"],
+        "type": "舰船",
+        "type_name": "阿利·伯克级驱逐舰",
+        "attribute": {}
+    },
+    {
+        "name": "DDG-57",
+        "alias_name": ["米切尔号"],
+        "type": "舰船",
+        "type_name": "阿利·伯克级驱逐舰",
+        "attribute": {}
+    },
+    {
+        "name": "DDG-58",
+        "alias_name": ["拉布恩号"],
+        "type": "舰船",
+        "type_name": "阿利·伯克级驱逐舰",
+        "attribute": {}
+    },
+    {
+        "name": "DDG-59",
+        "alias_name": ["拉塞尔号"],
+        "type": "舰船",
+        "type_name": "阿利·伯克级驱逐舰",
+        "attribute": {}
+    },
+    {
+        "name": "DDG-60",
+        "alias_name": ["保罗·汉密尔顿号"],
+        "type": "舰船",
+        "type_name": "阿利·伯克级驱逐舰",
+        "attribute": {}
+    },
+    {
+        "name": "DDG-61",
+        "alias_name": ["拉梅奇号"],
+        "type": "舰船",
+        "type_name": "阿利·伯克级驱逐舰",
+        "attribute": {}
+    },
+    {
+        "name": "DDG-62",
+        "alias_name": ["菲茨杰拉德号"],
+        "type": "舰船",
+        "type_name": "阿利·伯克级驱逐舰",
+        "attribute": {}
+    },
+    {
+        "name": "DDG-63",
+        "alias_name": ["史塔森号"],
+        "type": "舰船",
+        "type_name": "阿利·伯克级驱逐舰",
+        "attribute": {}
+    },
+    {
+        "name": "DDG-64",
+        "alias_name": ["卡尼号"],
+        "type": "舰船",
+        "type_name": "阿利·伯克级驱逐舰",
+        "attribute": {}
+    },
+    {
+        "name": "DDG-65",
+        "alias_name": ["本福尔德号"],
+        "type": "舰船",
+        "type_name": "阿利·伯克级驱逐舰",
+        "attribute": {}
+    },
+    {
+        "name": "DDG-66",
+        "alias_name": ["冈萨雷斯号"],
+        "type": "舰船",
+        "type_name": "阿利·伯克级驱逐舰",
+        "attribute": {}
+    },
+    {
+        "name": "DDG-67",
+        "alias_name": ["科尔号"],
+        "type": "舰船",
+        "type_name": "阿利·伯克级驱逐舰",
+        "attribute": {}
+    },
+    {
+        "name": "DDG-68",
+        "alias_name": ["沙利文号"],
+        "type": "舰船",
+        "type_name": "阿利·伯克级驱逐舰",
+        "attribute": {}
+    },
+    {
+        "name": "DDG-69",
+        "alias_name": ["米利厄斯号"],
+        "type": "舰船",
+        "type_name": "阿利·伯克级驱逐舰",
+        "attribute": {}
+    },
+    {
+        "name": "DDG-70",
+        "alias_name": ["霍珀号"],
+        "type": "舰船",
+        "type_name": "阿利·伯克级驱逐舰",
+        "attribute": {}
+    },
+    {
+        "name": "DDG-71",
+        "alias_name": ["罗斯号"],
+        "type": "舰船",
+        "type_name": "阿利·伯克级驱逐舰",
+        "attribute": {}
+    },
+    {
         "name": "DDG-1000",
         "alias_name": ["朱姆沃尔特号驱逐舰", "朱沃特号驱逐舰"],
         "type": "舰船",
@@ -43,5 +495,12 @@
             "num_missile": 80,
             "speed_knot": 30
         }
+    },
+    {
+        "name": "DDG-1001",
+        "alias_name": ["迈克尔·蒙苏尔号驱逐舰"],
+        "type": "舰船",
+        "type_name": "朱姆沃尔特级驱逐舰",
+        "attribute": {}
     }
 ]
