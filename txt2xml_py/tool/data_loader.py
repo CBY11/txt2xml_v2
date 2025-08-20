@@ -39,7 +39,7 @@ for file in file_list:
                     for model_alias in model['alias_name']:
                         name_list.append(model_alias)
                         items_name.append([model_alias, model_name])
-print(name_list)
+# print(name_list)
         # print(items_name)
 
 
@@ -116,7 +116,7 @@ def single_word_to_item(word):
         include=["documents", "distances"]
     )
     item_name, distance = results['documents'][0], results['distances'][0]
-    print(word, item_name, distance)
+    # print(word, item_name, distance)
     real_name = item_name[0]
     # Step 3: name of items to item
     for n in items_name:
@@ -134,7 +134,7 @@ def text_to_item(text):
     messages = [{"role": "system", "content": prompt},
                 {"role": "user", "content": text}]
     words = eval(txt2xml_client.fast_gen_response(messages, False))
-    print(words)
+    # print(words)
     # Step 2 & 3
     res = []
     for query in words:
