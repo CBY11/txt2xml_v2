@@ -209,7 +209,7 @@ def modify_xml(json_obj, src_xml_file_path, xml_file_path):
 
     # 将修改后的 HTML 保存到文件
     with open(xml_file_path, 'w', encoding='utf-8') as file:
-        file.write(str(soup))
+        file.write(soup.prettify())
 
     print("XML 内容已修改并保存。")
     return xml_str
