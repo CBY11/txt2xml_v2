@@ -58,7 +58,6 @@ def get_standard_json(json_obj_to_std, fields_to_standardize=None, standarder=ge
     递归遍历 json_obj，标准化指定字段（fields_to_standardize）中的值，
     使用 get_standard_name 函数对指定字段进行标准化。
 
-    :param src_jsons: 知识库
     :param standarder: standardize 函数，用于对指定字段进行标准化。
     :param json_obj_to_std: 输入的 JSON 对象（可以是字典或列表）。
     :param fields_to_standardize: 要进行标准化的字段名称列表。

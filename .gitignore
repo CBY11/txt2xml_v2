@@ -3,3 +3,5 @@ xml_file/safe_demo/
 tmp/audio
 pipreqs_ignore.txt
 config/
+__pycache__/
+.idea/
