@@ -172,7 +172,14 @@
         "name": "MIM-104",
         "alias_name": ["爱国者防空导弹"],
         "type": "导弹",
-        "attribute": {}
+        "attribute": {
+            "on_land": false,
+            "on_ship": true,
+            "on_plane": false,
+            "to_land": true,
+            "to_ship": false,
+            "to_plane": false
+        }
     },
     {
         "name": "RIM-66 SM-2MR",

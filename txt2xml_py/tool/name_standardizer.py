@@ -73,7 +73,8 @@ def get_standard_json(json_obj_to_std, fields_to_standardize=None, standarder=ge
                 json_obj_to_std[key] = get_standard_json(value, fields_to_standardize, standarder)
             # 如果当前键在 fields_to_standardize 中，并且值是字符串类型，则进行标准化
             elif key in fields_to_standardize:
-                json_obj_to_std[key], json_obj_to_std["attribute"] = standarder(value)
+                res1, res2 = standarder(value)
+                json_obj_to_std[key], json_obj_to_std["attribute"] = res1, res2["attribute"]
 
     elif isinstance(json_obj_to_std, list):
         # 如果当前对象是列表类型，遍历其中的每个元素
