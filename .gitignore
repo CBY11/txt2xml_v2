@@ -5,3 +5,4 @@ pipreqs_ignore.txt
 config/
 __pycache__/
 .idea/
+/record/
